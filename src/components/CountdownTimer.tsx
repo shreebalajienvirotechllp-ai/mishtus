@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Clock } from "lucide-react";
 
+const LAST_TALK_DATE = new Date("2024-05-13T00:00:00");
+
 const CountdownTimer = () => {
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
@@ -9,13 +11,9 @@ const CountdownTimer = () => {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
-    // ~11 months ago
-    const lastTalk = new Date();
-    lastTalk.setMonth(lastTalk.getMonth() - 11);
-
     const update = () => {
-      const now = new Date().getTime();
-      const diff = now - lastTalk.getTime();
+      const now = Date.now();
+      const diff = now - LAST_TALK_DATE.getTime();
       setDays(Math.floor(diff / (1000 * 60 * 60 * 24)));
       setHours(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
       setMinutes(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
@@ -35,7 +33,7 @@ const CountdownTimer = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section id="countdown" className="py-20 bg-background">
       <div className="mx-auto max-w-3xl px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,7 +44,9 @@ const CountdownTimer = () => {
           <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
             Aakhri baar baat hue...
           </h2>
-          <p className="mt-2 text-sm text-muted-foreground">aur har second count ho raha hai 🤍</p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            13 May 2024 se — aur har second count ho raha hai 🤍
+          </p>
         </motion.div>
 
         <motion.div
@@ -66,9 +66,14 @@ const CountdownTimer = () => {
               className="flex flex-col items-center"
             >
               <div className="glass-card rounded-2xl px-4 py-5 md:px-8 md:py-6 min-w-[70px] md:min-w-[100px]">
-                <span className="font-display text-3xl font-bold text-primary md:text-5xl">
+                <motion.span
+                  key={block.value}
+                  initial={{ y: -10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  className="font-display text-3xl font-bold text-primary md:text-5xl block"
+                >
                   {String(block.value).padStart(2, "0")}
-                </span>
+                </motion.span>
               </div>
               <span className="mt-2 text-xs text-muted-foreground font-body">{block.label}</span>
             </motion.div>

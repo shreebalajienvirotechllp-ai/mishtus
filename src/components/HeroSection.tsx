@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 
@@ -9,9 +10,26 @@ const petals = Array.from({ length: 15 }, (_, i) => ({
   size: 12 + Math.random() * 16,
 }));
 
+const subtitle = "Yeh jagah sirf tere liye bani hai";
+
 const HeroSection = () => {
+  const [typed, setTyped] = useState("");
+
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < subtitle.length) {
+        setTyped(subtitle.slice(0, i + 1));
+        i++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 70);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-romantic">
+    <section id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-romantic">
       {/* Floating petals */}
       {petals.map((petal) => (
         <motion.div
@@ -74,29 +92,34 @@ const HeroSection = () => {
             <span className="text-gradient-rose">🤍</span>
           </h1>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 1 }}
-            className="mt-6 font-display text-xl italic text-muted-foreground md:text-2xl"
-          >
-            Yeh jagah sirf tere liye bani hai
-          </motion.p>
+          <div className="mt-6 min-h-[2em]">
+            <span className="font-display text-xl italic text-muted-foreground md:text-2xl">
+              {typed}
+            </span>
+            <motion.span
+              animate={{ opacity: [1, 0] }}
+              transition={{ duration: 0.6, repeat: Infinity }}
+              className="text-primary font-light"
+            >
+              |
+            </motion.span>
+          </div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
+          transition={{ delay: 3 }}
           className="mt-12"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="text-primary/50"
+            className="text-primary/50 text-2xl"
           >
             ↓
           </motion.div>
+          <p className="mt-2 text-xs text-muted-foreground/60 font-body">Scroll down, Mishtu</p>
         </motion.div>
       </div>
     </section>
