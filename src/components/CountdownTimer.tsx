@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Clock } from "lucide-react";
 
-const LAST_TALK_DATE = new Date("2024-05-13T00:00:00");
+const LAST_TALK_DATE = new Date("2025-05-13T00:00:00");
 
 const CountdownTimer = () => {
   const [days, setDays] = useState(0);
@@ -45,7 +45,7 @@ const CountdownTimer = () => {
             Aakhri baar baat hue...
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            13 May 2024 se — aur har second count ho raha hai 🤍
+            13 May 2025 se — aur har second count ho raha hai 🤍
           </p>
         </motion.div>
 
