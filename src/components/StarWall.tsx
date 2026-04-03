@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, X } from "lucide-react";
+import { Star, X, Sparkles } from "lucide-react";
 
 const wishes = [
   "Har roz subah uthta hu toh pehla khayal tera hota hai, Mishtu. Yeh badla nahi, badlega bhi nahi.",
@@ -17,23 +17,22 @@ const wishes = [
   "Jab bhi zindagi mushkil lage, yaad rakhna — ek insaan hai jo tujhe genuinely chahta hai. Bina kisi condition ke.",
 ];
 
-const starPositions = wishes.map((_, i) => ({
-  top: `${15 + Math.sin(i * 1.2) * 25 + Math.random() * 20}%`,
-  left: `${8 + (i % 4) * 23 + Math.random() * 10}%`,
-  delay: i * 0.3,
-  twinkleDelay: Math.random() * 3,
-}));
-
 const StarWall = () => {
   const [selected, setSelected] = useState<number | null>(null);
+  const [revealed, setRevealed] = useState<Set<number>>(new Set());
+
+  const handleReveal = (i: number) => {
+    setRevealed((prev) => new Set(prev).add(i));
+    setSelected(i);
+  };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-night py-20">
+    <section className="relative overflow-hidden bg-gradient-night py-20">
       {/* Background stars */}
-      {Array.from({ length: 60 }, (_, i) => (
+      {Array.from({ length: 40 }, (_, i) => (
         <div
           key={`bg-star-${i}`}
-          className="absolute h-0.5 w-0.5 rounded-full bg-primary-foreground/30 animate-twinkle"
+          className="absolute h-0.5 w-0.5 rounded-full bg-primary-foreground/20 animate-twinkle"
           style={{
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
@@ -47,7 +46,7 @@ const StarWall = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-14 text-center"
         >
           <h2 className="font-display text-4xl font-bold md:text-5xl" style={{ color: "hsl(30, 50%, 92%)" }}>
             Wishes & Promises
@@ -57,42 +56,72 @@ const StarWall = () => {
           </p>
         </motion.div>
 
-        <div className="relative" style={{ minHeight: "500px" }}>
-          {wishes.map((wish, i) => (
-            <motion.button
-              key={i}
-              className="absolute group"
-              style={{ top: starPositions[i].top, left: starPositions[i].left }}
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: starPositions[i].delay * 0.15, type: "spring" }}
-              onClick={() => setSelected(i)}
-              whileHover={{ scale: 1.4 }}
-            >
-              <motion.div
-                animate={{ opacity: [0.5, 1, 0.5], scale: [1, 1.2, 1] }}
-                transition={{
-                  duration: 2 + Math.random() * 2,
-                  repeat: Infinity,
-                  delay: starPositions[i].twinkleDelay,
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {wishes.map((_, i) => {
+            const isRevealed = revealed.has(i);
+            return (
+              <motion.button
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06, type: "spring", damping: 20 }}
+                whileHover={{ scale: 1.05, y: -4 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => handleReveal(i)}
+                className="group relative flex flex-col items-center justify-center rounded-2xl border p-6 transition-colors aspect-square"
+                style={{
+                  background: isRevealed
+                    ? "hsl(30 40% 97% / 0.08)"
+                    : "hsl(260 20% 18% / 0.5)",
+                  borderColor: isRevealed
+                    ? "hsl(30 60% 78% / 0.4)"
+                    : "hsl(260 20% 30% / 0.4)",
                 }}
               >
-                <Star
-                  className="h-6 w-6 md:h-8 md:w-8 drop-shadow-[0_0_8px_hsl(var(--soft-amber))]"
-                  fill="hsl(var(--soft-amber))"
-                  stroke="hsl(var(--soft-amber))"
-                />
-              </motion.div>
-              <span
-                className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs opacity-0 transition-opacity group-hover:opacity-100"
-                style={{ color: "hsl(30, 30%, 70%)" }}
-              >
-                #{i + 1}
-              </span>
-            </motion.button>
-          ))}
+                <motion.div
+                  animate={
+                    !isRevealed
+                      ? { opacity: [0.5, 1, 0.5], scale: [1, 1.15, 1] }
+                      : {}
+                  }
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    delay: Math.random() * 2,
+                  }}
+                >
+                  {isRevealed ? (
+                    <Sparkles className="h-7 w-7 md:h-8 md:w-8" style={{ color: "hsl(30, 60%, 78%)" }} />
+                  ) : (
+                    <Star
+                      className="h-7 w-7 md:h-8 md:w-8 drop-shadow-[0_0_10px_hsl(30,60%,78%)]"
+                      fill="hsl(30, 60%, 78%)"
+                      stroke="hsl(30, 60%, 78%)"
+                    />
+                  )}
+                </motion.div>
+                <span
+                  className="mt-3 text-xs font-display"
+                  style={{ color: isRevealed ? "hsl(30, 60%, 78%)" : "hsl(30, 30%, 60%)" }}
+                >
+                  {isRevealed ? "Opened ✨" : `Wish #${i + 1}`}
+                </span>
+              </motion.button>
+            );
+          })}
         </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="mt-10 text-center font-display text-sm italic"
+          style={{ color: "hsl(30, 30%, 60%)" }}
+        >
+          {revealed.size}/{wishes.length} wishes revealed 🤍
+        </motion.p>
       </div>
 
       {/* Expanded wish card */}
@@ -106,12 +135,15 @@ const StarWall = () => {
             onClick={() => setSelected(null)}
           >
             <motion.div
-              initial={{ scale: 0.5, opacity: 0, rotateY: -90 }}
-              animate={{ scale: 1, opacity: 1, rotateY: 0 }}
-              exit={{ scale: 0.5, opacity: 0, rotateY: 90 }}
-              transition={{ type: "spring", damping: 20 }}
-              className="relative max-w-md rounded-2xl glass-card p-8 shadow-2xl"
-              style={{ background: "hsl(30, 40%, 97%)" }}
+              initial={{ scale: 0.5, opacity: 0, y: 30 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.8, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 22 }}
+              className="relative max-w-md rounded-2xl p-8 shadow-2xl border"
+              style={{
+                background: "hsl(30, 40%, 97%)",
+                borderColor: "hsl(30, 60%, 78% / 0.3)",
+              }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -129,7 +161,7 @@ const StarWall = () => {
               <p className="font-display text-lg italic leading-relaxed text-foreground">
                 "{wishes[selected]}"
               </p>
-              <div className="mt-6 text-right text-sm text-primary">— Tera bacha 🤍</div>
+              <div className="mt-6 text-right text-sm text-primary font-display">— Tera bacha 🤍</div>
             </motion.div>
           </motion.div>
         )}
