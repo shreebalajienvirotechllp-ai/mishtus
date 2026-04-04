@@ -1,21 +1,26 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, X, Image } from "lucide-react";
+import childhood1 from "@/assets/childhood-1.png";
+import childhood2 from "@/assets/childhood-2.png";
 
-const placeholders = Array.from({ length: 8 }, (_, i) => ({
-  id: i,
-  caption: [
-    "Pehli baar dekha tha...",
-    "Woh din yaad hai?",
-    "Teri woh smile 🤍",
-    "Kaash yeh moment ruk jaata",
-    "Bas tujhe dekhta raha",
-    "Yeh photo meri favourite hai",
-    "Tu kitni khoobsurat hai",
-    "Hamesha yaad rahega",
-  ][i],
-  height: [280, 340, 240, 300, 320, 260, 350, 290][i],
-}));
+const galleryItems = [
+  { id: 0, src: childhood1, caption: "Choote hote ke photos 🤍 isse proof hota hai hamaare ladke ladko se kaam hote hai", height: 340 },
+  { id: 1, src: childhood2, caption: "Family wali photo — kitne cute the hum 🥺", height: 340 },
+  ...Array.from({ length: 6 }, (_, i) => ({
+    id: i + 2,
+    src: null as string | null,
+    caption: [
+      "Woh din yaad hai?",
+      "Kaash yeh moment ruk jaata",
+      "Bas tujhe dekhta raha",
+      "Yeh photo meri favourite hai",
+      "Tu kitni khoobsurat hai",
+      "Hamesha yaad rahega",
+    ][i],
+    height: [240, 300, 320, 260, 350, 290][i],
+  })),
+];
 
 const MemoryGallery = () => {
   const [lightbox, setLightbox] = useState<number | null>(null);
