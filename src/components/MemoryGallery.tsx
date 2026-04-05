@@ -16,10 +16,10 @@ const MemoryGallery = () => {
           className="mb-16 text-center"
         >
           <h2 className="font-display text-4xl font-bold text-foreground md:text-5xl">
-            Hamare Lamhe 🤍
+            Bachhhu ke pyaari pyaari memories 🤍
           </h2>
           <p className="mt-3 text-sm text-muted-foreground">
-            Photos aur videos yahan add kar sakta hu — bas tu bol
+            Yeh pe sabi add nahi kar paunga meri aakho mein dikhna kitne pyaaare pyaaare photos hai
           </p>
         </motion.div>
 
