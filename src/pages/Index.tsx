@@ -43,7 +43,7 @@ const Index = () => {
         <FloatingNav />
         <HeroSection />
         <BirthdayCountdown />
-        <div id="miss"><ThingsIMiss /></div>
+        
         <div id="stars"><StarWall /></div>
         <div id="gallery"><MemoryGallery /></div>
         <div id="reasons"><ReasonsILoveYou /></div>
