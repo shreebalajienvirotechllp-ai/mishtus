@@ -3,7 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import PasswordGate from "@/components/PasswordGate";
 import HeroSection from "@/components/HeroSection";
 import BirthdayCountdown from "@/components/BirthdayCountdown";
-import ThingsIMiss from "@/components/ThingsIMiss";
+
 import StarWall from "@/components/StarWall";
 import MemoryGallery from "@/components/MemoryGallery";
 import ReasonsILoveYou from "@/components/ReasonsILoveYou";
