@@ -23,7 +23,7 @@ const MemoryGallery = () => {
           </p>
         </motion.div>
 
-        <div className="columns-2 gap-4 md:columns-3 lg:columns-4">
+        <div className="columns-2 gap-3 md:columns-3 md:gap-4 lg:columns-4">
           {galleryItems.map((item) => (
             <motion.div
               key={item.id}
