@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Sparkles } from "lucide-react";
 import coupleSilhouette from "@/assets/couple-silhouette.png";
 
-const subtitle = "Janam din mubaarak ho meri jaan 🎂✨\nDuniya ki saari khushiyaan teri jholi mein aayein — aur mein bhi 🤍\nAaj teri duniya ka sabse khaas din hai\npar meri duniya toh roz khaas hoti hai — kyunki tu hai na 💕";
+const subtitle = "Happyyyy birthday to my jigar ka tukdaaaaa 🤌🥹❤️\nJanam din mubaarak ho meri jaan 🎂✨\nDuniya ki saari khushiyaan teri jholi mein aayein — aur mein bhi 🤍\nMeri lifeee ch tusi aye mein bahot lucky aa 🥹❤️\nAaj teri duniya ka sabse khaas din hai\npar meri duniya toh roz khaas hoti hai — kyunki tu hai na 💕\nMein apne vlooo pura rkhunga foreverrrrr 🥹💋\nLoveeeeee uuuuuu alottttttt myy sweatiest gurl 😘❤️";
 
 const quotes = [
   "Happyyyy birthday to my jigar ka tukdaaaaa 🤌🥹❤️",
