@@ -58,12 +58,26 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
     @apply bg-background text-foreground font-body antialiased;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
+  }
+
+  /* Better mobile text rendering */
+  @media (max-width: 768px) {
+    html {
+      font-size: 15px;
+    }
   }
 }
 
