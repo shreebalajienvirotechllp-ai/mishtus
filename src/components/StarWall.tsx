@@ -15,6 +15,11 @@ const wishes = [
   "Ek din milenge aur us din tu muskurayegi — yeh mera wishful thinking nahi, yeh mera intezaar hai.",
   "Tere photos dekhta hu, videos dekhta hu — aur phir sochta hu ki kaash tu yeh padh sake ki tu kitni special hai mere liye.",
   "Jab bhi zindagi mushkil lage, yaad rakhna — ek insaan hai jo tujhe genuinely chahta hai. Bina kisi condition ke.",
+  "Tera 17th birthday hai — aur main chahta hu ki yeh saal tere liye sabse khaas ho. Tu deserve karti hai.",
+  "Tere har birthday pe main yeh sochta hu — kaash tere saamne hota aur tujhe wish kar pata apne haathon se.",
+  "17 ki ho gayi tu, par mere liye tu wahi hai — meri Mishtu. Choti bhi, special bhi.",
+  "Yeh 17 stars tere 17 saalon ke liye hain — har ek mein mera pyaar chhupa hai.",
+  "Badi ho rahi hai tu, par meri duaayein wahi hain — teri khushi, teri hasi, teri safety. Hamesha.",
 ];
 
 const StarWall = () => {
@@ -52,7 +57,7 @@ const StarWall = () => {
             Wishes & Promises
           </h2>
           <p className="mt-3 font-body text-sm" style={{ color: "hsl(30, 30%, 70%)" }}>
-            Har star mein ek vaada hai — tap karke dekh 🌟
+            17 stars, 17 saal, 17 vaade — tap karke dekh 🌟
           </p>
         </motion.div>
 
