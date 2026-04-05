@@ -7,8 +7,8 @@ const MemoryGallery = () => {
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   return (
-    <section className="bg-gradient-romantic py-20">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="bg-gradient-romantic py-16 md:py-20">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -23,7 +23,7 @@ const MemoryGallery = () => {
           </p>
         </motion.div>
 
-        <div className="columns-2 gap-4 md:columns-3 lg:columns-4">
+        <div className="columns-2 gap-3 md:columns-3 md:gap-4 lg:columns-4">
           {galleryItems.map((item) => (
             <motion.div
               key={item.id}
@@ -31,7 +31,7 @@ const MemoryGallery = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: item.id * 0.03 }}
-              className="group relative mb-4 cursor-pointer overflow-hidden rounded-xl"
+              className="group relative mb-3 md:mb-4 cursor-pointer overflow-hidden rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300"
               style={{ height: item.height }}
               onClick={() => setLightbox(item.id)}
             >

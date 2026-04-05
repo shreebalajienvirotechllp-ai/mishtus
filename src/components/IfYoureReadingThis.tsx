@@ -3,8 +3,8 @@ import { Heart } from "lucide-react";
 
 const IfYoureReadingThis = () => {
   return (
-    <section className="py-24 bg-gradient-romantic">
-      <div className="mx-auto max-w-xl px-6">
+    <section className="py-16 md:py-24 bg-gradient-romantic">
+      <div className="mx-auto max-w-xl px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

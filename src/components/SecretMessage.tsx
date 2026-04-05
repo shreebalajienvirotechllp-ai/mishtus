@@ -31,8 +31,8 @@ const SecretMessage = () => {
   };
 
   return (
-    <section className="py-20 bg-background">
-      <div className="mx-auto max-w-xl px-6 text-center">
+    <section className="py-16 md:py-20 bg-background">
+      <div className="mx-auto max-w-xl px-4 md:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

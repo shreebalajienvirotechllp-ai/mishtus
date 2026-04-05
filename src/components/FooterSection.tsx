@@ -3,8 +3,8 @@ import { Heart } from "lucide-react";
 
 const FooterSection = () => {
   return (
-    <footer className="bg-gradient-romantic py-16 border-t border-border/30">
-      <div className="mx-auto max-w-2xl px-6 text-center">
+    <footer className="bg-gradient-romantic py-12 md:py-16 border-t border-border/30">
+      <div className="mx-auto max-w-2xl px-4 md:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
