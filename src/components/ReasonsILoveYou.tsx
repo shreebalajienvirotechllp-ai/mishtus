@@ -3,7 +3,7 @@ import { Heart } from "lucide-react";
 
 const reasons = [
   "Teri hansi sunke sab theek lagta hai",
-  "Tu bina try kiye sabse khoobsurat lagti hai",
+  "Aap bina try kiye bhi sabse khoobsurat lagti ho i remimber bahot bhar without facewash bhi milne aye but itne cute itne cute lagte thi kooi hadd he nahi",
   "Tera gussa bhi cute hai",
   "Tujhse baat karke din achha ho jaata hai",
   "Tu samajhti hai bina bole",
@@ -11,7 +11,7 @@ const reasons = [
   "Tu sabse alag hai — genuinely",
   "Tera caring nature",
   "Jab tu hasti hai toh dimples",
-  "Tera woh confused face",
+  "Apka vo confused face",
   "Tu strong hai — usse bhi zyada jitna tu sochti hai",
   "Tujhse milke better insaan bana",
   "Tera sense of humor",

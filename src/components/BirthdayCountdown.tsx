@@ -82,10 +82,10 @@ const BirthdayCountdown = () => {
                 <Cake className="mx-auto mb-4 h-12 w-12 text-primary" />
               </motion.div>
               <h2 className="font-display text-4xl font-bold text-foreground md:text-5xl">
-                Happy Birthday, Mishtu! 🎂🥳
+                Happy Birthday Mishtu! 🎂🥳
               </h2>
               <p className="mt-3 text-lg text-primary font-display italic">
-                Aaj tera din hai — duniya ki sabse khoobsurat ladki ka birthday! 🤍
+                Aaj aapka din hai duniya ki sabse khoobsurat ladki ka birthday! mwwaahhh 🤍
               </p>
               <motion.div
                 className="mt-6 text-6xl"
@@ -102,7 +102,7 @@ const BirthdayCountdown = () => {
                   Duniya ki saari khushiyan teri ho — yeh dua hai, yeh wish hai, aur yeh promise hai.
                 </p>
                 <p className="mt-4 font-display text-lg italic text-primary">
-                  Happy Birthday Jaan 🎂🤍
+                  Happy Birthday meri Jaan 🎂🤍
                 </p>
                 <p className="mt-4 text-right font-display text-sm text-primary">
                   — Tera bacha 🤍
