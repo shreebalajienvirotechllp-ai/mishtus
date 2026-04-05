@@ -1,15 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Sparkles } from "lucide-react";
 import coupleSilhouette from "@/assets/couple-silhouette.png";
-
-const petals = Array.from({ length: 25 }, (_, i) => ({
-  id: i,
-  left: Math.random() * 100,
-  delay: Math.random() * 10,
-  duration: 8 + Math.random() * 8,
-  size: 8 + Math.random() * 18,
-}));
 
 const subtitle = "Happy Birthday Mishty darluuuu 🎂\nbahot pyaar se likha hai thoda time nikaal ke ache se padh lena aur agar time na mille toh mujhe apne paas rakh lena";
 
@@ -18,7 +10,65 @@ const quotes = [
   "Tum sa nahi hai koi...",
   "Hoon mein bas tera ✨",
   "Aisi dillagi hai tu 💫",
+  "Tu meri neend hai, tu meri subah hai 🌅",
 ];
+
+// Pre-generate particles to avoid re-renders
+const petals = Array.from({ length: 30 }, (_, i) => ({
+  id: i,
+  left: Math.random() * 100,
+  delay: Math.random() * 12,
+  duration: 8 + Math.random() * 10,
+  size: 6 + Math.random() * 20,
+  opacity: 0.08 + Math.random() * 0.12,
+}));
+
+const sparkles = Array.from({ length: 50 }, (_, i) => ({
+  id: i,
+  left: Math.random() * 100,
+  top: Math.random() * 100,
+  size: 2 + Math.random() * 7,
+  colorIdx: i % 4,
+  duration: 2 + Math.random() * 5,
+  delay: Math.random() * 8,
+}));
+
+const shootingStars = Array.from({ length: 4 }, (_, i) => ({
+  id: i,
+  top: 10 + i * 18,
+  delay: 2 + i * 4,
+  width: 60 + Math.random() * 60,
+}));
+
+const rings = [
+  { size: 300, mdSize: 450, delay: 0, duration: 4 },
+  { size: 500, mdSize: 700, delay: 1.5, duration: 5 },
+  { size: 700, mdSize: 950, delay: 3, duration: 6 },
+];
+
+const sparkleColors = [
+  "hsl(var(--soft-amber) / 0.5)",
+  "hsl(var(--primary) / 0.35)",
+  "hsl(var(--rose-gold) / 0.45)",
+  "hsl(var(--blush) / 0.4)",
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.25, delayChildren: 0.2 },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 1, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
+};
 
 const HeroSection = () => {
   const [typed, setTyped] = useState("");
@@ -33,7 +83,7 @@ const HeroSection = () => {
       } else {
         clearInterval(interval);
       }
-    }, 70);
+    }, 65);
     return () => clearInterval(interval);
   }, []);
 
@@ -46,35 +96,70 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-romantic">
-      {/* Animated gradient background shimmer */}
+      {/* Multi-layer animated gradient background */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "linear-gradient(135deg, hsl(var(--warm-cream)) 0%, hsl(var(--blush) / 0.4) 30%, hsl(var(--primary) / 0.08) 60%, hsl(var(--warm-cream)) 100%)",
+          background: "linear-gradient(135deg, hsl(var(--warm-cream)) 0%, hsl(var(--blush) / 0.5) 25%, hsl(var(--primary) / 0.1) 50%, hsl(var(--rose-gold) / 0.15) 75%, hsl(var(--warm-cream)) 100%)",
           backgroundSize: "400% 400%",
         }}
-        animate={{ backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"] }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ backgroundPosition: ["0% 0%", "50% 100%", "100% 0%", "0% 0%"] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Dreamy radial glow */}
+      {/* Secondary shimmer overlay */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at 30% 20%, hsl(var(--primary) / 0.06) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, hsl(var(--rose-gold) / 0.08) 0%, transparent 50%)",
+        }}
+        animate={{ opacity: [0.5, 1, 0.5] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Pulsing concentric rings */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {rings.map((ring, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full border"
+            style={{
+              width: ring.size,
+              height: ring.size,
+              borderColor: `hsl(var(--primary) / ${0.06 - i * 0.015})`,
+            }}
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.3, 0.7, 0.3],
+            }}
+            transition={{
+              duration: ring.duration,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: ring.delay,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Main radial glow — bigger & more dramatic */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <motion.div
-          className="w-[700px] h-[700px] md:w-[900px] md:h-[900px] rounded-full"
+          className="w-[600px] h-[600px] md:w-[1000px] md:h-[1000px] rounded-full"
           style={{
-            background: "radial-gradient(circle, hsl(var(--primary) / 0.18) 0%, hsl(var(--rose-gold) / 0.08) 40%, transparent 70%)",
+            background: "radial-gradient(circle, hsl(var(--primary) / 0.22) 0%, hsl(var(--rose-gold) / 0.1) 35%, hsl(var(--blush) / 0.05) 60%, transparent 75%)",
           }}
-          animate={{ scale: [1, 1.15, 1], opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
-      {/* Couple silhouette in background */}
+      {/* Couple silhouette */}
       <motion.div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none z-[1]"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 0.12, y: 0 }}
-        transition={{ duration: 2, delay: 1 }}
+        initial={{ opacity: 0, y: 60, scale: 0.95 }}
+        animate={{ opacity: 0.12, y: 0, scale: 1 }}
+        transition={{ duration: 2.5, delay: 1.2, ease: "easeOut" }}
       >
         <img
           src={coupleSilhouette}
@@ -86,16 +171,16 @@ const HeroSection = () => {
         />
       </motion.div>
 
-      {/* Floating petals */}
+      {/* Floating petals — more and varied */}
       {petals.map((petal) => (
         <motion.div
           key={petal.id}
-          className="absolute text-primary/15"
-          style={{ left: `${petal.left}%` }}
+          className="absolute"
+          style={{ left: `${petal.left}%`, color: `hsl(var(--primary) / ${petal.opacity})` }}
           animate={{
             y: ["-10vh", "110vh"],
-            rotate: [0, 720],
-            x: [0, Math.sin(petal.id) * 50],
+            rotate: [0, 360 + Math.random() * 360],
+            x: [0, Math.sin(petal.id) * 60, Math.cos(petal.id) * 30],
           }}
           transition={{
             duration: petal.duration,
@@ -108,153 +193,195 @@ const HeroSection = () => {
         </motion.div>
       ))}
 
-      {/* Sparkle / bokeh particles */}
-      {Array.from({ length: 40 }, (_, i) => (
+      {/* Sparkle / bokeh particles — more, varied colors */}
+      {sparkles.map((s) => (
         <motion.div
-          key={`sparkle-${i}`}
+          key={`sparkle-${s.id}`}
           className="absolute rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            width: `${2 + Math.random() * 6}px`,
-            height: `${2 + Math.random() * 6}px`,
-            background: i % 3 === 0
-              ? "hsl(var(--soft-amber) / 0.5)"
-              : i % 3 === 1
-              ? "hsl(var(--primary) / 0.3)"
-              : "hsl(var(--rose-gold) / 0.4)",
+            left: `${s.left}%`,
+            top: `${s.top}%`,
+            width: `${s.size}px`,
+            height: `${s.size}px`,
+            background: sparkleColors[s.colorIdx],
           }}
           animate={{
             opacity: [0, 1, 0],
-            scale: [0, 1.5, 0],
+            scale: [0, 1.8, 0],
           }}
           transition={{
-            duration: 2 + Math.random() * 4,
+            duration: s.duration,
             repeat: Infinity,
-            delay: Math.random() * 6,
+            delay: s.delay,
           }}
         />
       ))}
 
-      {/* Shooting stars */}
-      {Array.from({ length: 3 }, (_, i) => (
+      {/* Shooting stars — more frequent */}
+      {shootingStars.map((star) => (
         <motion.div
-          key={`shoot-${i}`}
+          key={`shoot-${star.id}`}
           className="absolute h-px rounded-full"
           style={{
-            width: "80px",
-            background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent)",
-            top: `${15 + i * 20}%`,
-            left: "-80px",
+            width: `${star.width}px`,
+            background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.6), hsl(var(--rose-gold) / 0.4), transparent)",
+            top: `${star.top}%`,
+            left: "-100px",
           }}
           animate={{
             x: ["0vw", "120vw"],
-            y: [0, 100],
-            opacity: [0, 1, 0],
+            y: [0, 80 + Math.random() * 40],
+            opacity: [0, 1, 1, 0],
           }}
           transition={{
-            duration: 2.5,
+            duration: 2,
             repeat: Infinity,
-            delay: 3 + i * 5,
+            delay: star.delay,
             ease: "easeIn",
+            repeatDelay: 6,
           }}
         />
       ))}
 
-      <div className="relative z-10 px-6 text-center">
-        {/* Glowing heart */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, type: "spring", damping: 10 }}
-        >
+      {/* Main content — cinematic staggered entrance */}
+      <motion.div
+        className="relative z-10 px-6 text-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Glowing heart — bigger, triple glow */}
+        <motion.div variants={childVariants}>
           <motion.div
-            className="mb-8 inline-block relative"
-            animate={{ scale: [1, 1.15, 1] }}
+            className="mb-10 inline-block relative"
+            animate={{ scale: [1, 1.18, 1] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <motion.div
-                className="w-28 h-28 rounded-full"
-                style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.35), transparent 70%)" }}
-                animate={{ scale: [1, 1.6, 1], opacity: [0.4, 0.8, 0.4] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            {/* Outer glow */}
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center"
+              animate={{ scale: [1, 2, 1], opacity: [0.1, 0.35, 0.1] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div
+                className="w-40 h-40 rounded-full"
+                style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.3), transparent 70%)" }}
               />
-            </div>
-            <Heart className="relative mx-auto h-16 w-16 md:h-20 md:w-20 text-primary drop-shadow-lg" fill="currentColor" />
+            </motion.div>
+            {/* Inner glow */}
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center"
+              animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.8, 0.3] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div
+                className="w-28 h-28 rounded-full"
+                style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.4), transparent 70%)" }}
+              />
+            </motion.div>
+            {/* Heart icon */}
+            <motion.div
+              animate={{ rotate: [0, -5, 5, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Heart
+                className="relative mx-auto h-20 w-20 md:h-24 md:w-24 text-primary"
+                fill="currentColor"
+                style={{ filter: "drop-shadow(0 0 20px hsl(var(--primary) / 0.5)) drop-shadow(0 0 40px hsl(var(--primary) / 0.25))" }}
+              />
+            </motion.div>
           </motion.div>
         </motion.div>
 
-        {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-        >
-          <h1 className="text-5xl font-display font-bold leading-tight text-foreground md:text-7xl lg:text-8xl">
+        {/* Title with glow */}
+        <motion.div variants={childVariants}>
+          <h1
+            className="text-5xl font-display font-bold leading-tight text-foreground md:text-7xl lg:text-8xl"
+            style={{ textShadow: "0 0 60px hsl(var(--primary) / 0.15)" }}
+          >
             Mishtu Meri Jaan{" "}
-            <span className="text-gradient-rose">🤍</span>
+            <motion.span
+              className="text-gradient-rose inline-block"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              🤍
+            </motion.span>
           </h1>
         </motion.div>
 
         {/* Typewriter */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-6 min-h-[2em]"
-        >
+        <motion.div variants={childVariants} className="mt-6 min-h-[2em]">
           <span className="font-display text-xl italic text-muted-foreground md:text-2xl whitespace-pre-wrap">
             {typed}
           </span>
           <motion.span
             animate={{ opacity: [1, 0] }}
-            transition={{ duration: 0.6, repeat: Infinity }}
-            className="text-primary font-light"
+            transition={{ duration: 0.5, repeat: Infinity }}
+            className="text-primary font-light text-xl md:text-2xl"
           >
             |
           </motion.span>
         </motion.div>
 
-        {/* Rotating quotes */}
+        {/* Rotating quotes — larger, with decorative lines */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-          className="mt-8 min-h-[2.5em] flex items-center justify-center"
+          variants={childVariants}
+          className="mt-10 min-h-[3em] flex flex-col items-center justify-center gap-2"
         >
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={quoteIndex}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.6 }}
-              className="font-display text-base md:text-lg text-primary/70 italic opacity-65"
-            >
-              {quotes[quoteIndex]}
-            </motion.p>
-          </AnimatePresence>
+          <div className="flex items-center gap-3">
+            <motion.div
+              className="h-px w-8 md:w-12"
+              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4))" }}
+              animate={{ scaleX: [0, 1, 0] }}
+              transition={{ duration: 3.5, repeat: Infinity }}
+            />
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={quoteIndex}
+                initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="font-display text-lg md:text-xl text-primary/60 italic"
+              >
+                {quotes[quoteIndex]}
+              </motion.p>
+            </AnimatePresence>
+            <motion.div
+              className="h-px w-8 md:w-12"
+              style={{ background: "linear-gradient(90deg, hsl(var(--primary) / 0.4), transparent)" }}
+              animate={{ scaleX: [0, 1, 0] }}
+              transition={{ duration: 3.5, repeat: Infinity }}
+            />
+          </div>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator — enhanced */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 3.5 }}
-          className="mt-14"
+          transition={{ delay: 4 }}
+          className="mt-16"
         >
-          <Sparkles className="mx-auto h-5 w-5 text-primary/40 mb-2" />
           <motion.div
-            animate={{ y: [0, 10, 0] }}
+            animate={{ y: [0, -5, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <Sparkles className="mx-auto h-5 w-5 text-primary/40 mb-3" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="text-primary/50 text-2xl"
           >
             ↓
           </motion.div>
-          <p className="mt-2 text-xs text-muted-foreground/60 font-body">Scroll down, Mishtu</p>
+          <p className="mt-2 text-xs text-muted-foreground/60 font-body tracking-widest uppercase">
+            Scroll down, Mishtu
+          </p>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };
