@@ -3,6 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import PasswordGate from "@/components/PasswordGate";
 import HeroSection from "@/components/HeroSection";
 import BirthdayCountdown from "@/components/BirthdayCountdown";
+import SectionDivider from "@/components/SectionDivider";
 
 import StarWall from "@/components/StarWall";
 import MemoryGallery from "@/components/MemoryGallery";
@@ -42,17 +43,27 @@ const Index = () => {
         <EmojiRain />
         <FloatingNav />
         <HeroSection />
+        <SectionDivider variant="glow" />
         <BirthdayCountdown />
+        <SectionDivider variant="dots" />
         
         <div id="stars"><StarWall /></div>
+        <SectionDivider variant="glow" />
         <div id="gallery"><MemoryGallery /></div>
+        <SectionDivider variant="dots" />
         <div id="reasons"><ReasonsILoveYou /></div>
+        <SectionDivider variant="glow" />
         
         <div id="daily"><DailyMessage /></div>
+        <SectionDivider variant="dots" />
         <div id="dreams"><DreamFuture /></div>
+        <SectionDivider variant="glow" />
         <SecretMessage />
+        <SectionDivider variant="dots" />
         <div id="letter"><LoveLetter /></div>
+        <SectionDivider variant="glow" />
         <div id="mandir"><MandirMoment /></div>
+        <SectionDivider variant="dots" />
         <div id="reading"><IfYoureReadingThis /></div>
         <FooterSection />
       </div>
