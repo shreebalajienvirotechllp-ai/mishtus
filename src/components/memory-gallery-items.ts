@@ -47,6 +47,16 @@ import gallery46 from "@/assets/gallery-46.png";
 import gallery47 from "@/assets/gallery-47.png";
 import gallery48 from "@/assets/gallery-48.png";
 import gallery49 from "@/assets/gallery-49.png";
+import gallery50 from "@/assets/gallery-50.png";
+import gallery51 from "@/assets/gallery-51.png";
+import gallery52 from "@/assets/gallery-52.png";
+import gallery53 from "@/assets/gallery-53.png";
+import gallery54 from "@/assets/gallery-54.png";
+import gallery55 from "@/assets/gallery-55.png";
+import gallery56 from "@/assets/gallery-56.png";
+import gallery57 from "@/assets/gallery-57.png";
+import gallery58 from "@/assets/gallery-58.png";
+import gallery59 from "@/assets/gallery-59.png";
 
 export type GalleryItem = {
   id: number;
@@ -105,6 +115,16 @@ export const galleryItems: GalleryItem[] = [
   { id: 45, src: gallery47, caption: "Choti si cutie 💚", height: 340, type: "image" },
   { id: 46, src: gallery48, caption: "Mandir mein teeno ✨", height: 360, type: "image" },
   { id: 47, src: gallery49, caption: "Princess in flowers 🌸", height: 360, type: "image" },
-  { id: 48, src: "/videos/gallery-video.mp4", caption: "Hamare special moments 🎬", height: 320, type: "video" },
-  { id: 49, src: "/videos/gallery-video-2.mp4", caption: "Ek aur special moment 🎥", height: 320, type: "video" },
+  { id: 48, src: gallery50, caption: "Mandir mein bestie ke saath 💗", height: 340, type: "image" },
+  { id: 49, src: gallery51, caption: "Gang poori ikatthi 🤩", height: 320, type: "image" },
+  { id: 50, src: gallery52, caption: "Hotel wali selfie 🏨", height: 340, type: "image" },
+  { id: 51, src: gallery53, caption: "Family ke saath mandir 🙏", height: 360, type: "image" },
+  { id: 52, src: gallery54, caption: "Boating wali family trip ⛵", height: 320, type: "image" },
+  { id: 53, src: gallery55, caption: "Poori family ek saath 🤍", height: 360, type: "image" },
+  { id: 54, src: gallery56, caption: "Rocks pe baithi cuties 🌊", height: 280, type: "image" },
+  { id: 55, src: gallery57, caption: "Photo collage queen 📸", height: 340, type: "image" },
+  { id: 56, src: gallery58, caption: "Phoolon ke beech mein 🌼", height: 380, type: "image" },
+  { id: 57, src: gallery59, caption: "Balloon wali smile 🎈", height: 360, type: "image" },
+  { id: 58, src: "/videos/gallery-video.mp4", caption: "Hamare special moments 🎬", height: 320, type: "video" },
+  { id: 59, src: "/videos/gallery-video-2.mp4", caption: "Ek aur special moment 🎥", height: 320, type: "video" },
 ];
