@@ -3,7 +3,7 @@ import { Sparkles } from "lucide-react";
 
 const MandirMoment = () => {
   return (
-    <section id="mandir" className="py-24 bg-background relative overflow-hidden">
+    <section id="mandir" className="py-16 md:py-24 bg-background relative overflow-hidden">
       {/* Subtle floating sparkles */}
       {[...Array(5)].map((_, i) => (
         <motion.div
