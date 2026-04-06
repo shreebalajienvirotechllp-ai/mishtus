@@ -78,7 +78,7 @@ const childVariants = {
 
 const HeroSection = () => {
   const [typed, setTyped] = useState("");
-  const [quoteIndex, setQuoteIndex] = useState(0);
+  
 
   useEffect(() => {
     let i = 0;
