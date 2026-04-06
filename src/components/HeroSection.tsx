@@ -15,7 +15,7 @@ const quotes = [
   "Crush thi, hai, aur rahegi — forever ✨",
   "Do you know… Main tenu kinna pyaar karda 💕",
   "Do you know… Main tere utte kinna marda 🥺",
-  "Do you know… Tere layi main ta baki kudiya chad ta 🤍",
+  "Do you know… Tere layi baki kudiya chad te 🤍",
   "Do you know… Tera layi kudiya naal lad da 😤❤️",
 ];
 
