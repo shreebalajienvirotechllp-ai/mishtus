@@ -103,7 +103,7 @@ const MandirMoment = () => {
               viewport={{ once: true }}
               transition={{ delay: 1.5 }}
             >
-              Smile kar diya kar... bahot pyaari lagti hai.
+              Smile kar diya karo... bahot pyaari lagti hoo
             </motion.p>
 
             <motion.p
