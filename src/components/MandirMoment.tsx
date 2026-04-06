@@ -113,7 +113,7 @@ const MandirMoment = () => {
               transition={{ delay: 1.7 }}
               className="text-muted-foreground"
             >
-              Itne paas se, bahot time ke baad dikhi — aur dil bas ruk sa gaya. 💫
+              Itne paas se bahot time ke baad dikhi aur dil bas ruk sa  he gya meri heartbeat dikhne thi unexpectedly samne se milna mandir mein its god plaaning i take it as a parshaddd meri jaan💫
             </motion.p>
           </div>
         </motion.div>
