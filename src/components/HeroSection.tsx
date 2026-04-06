@@ -13,7 +13,10 @@ const quotes = [
   "Loveeeeee uuuuuu alottttttt myy sweatiest gurl 😘💋❤️",
   "Jo chahida thonu meinu dsdeya kro — bss tusi khush rho hmeshaa 💘",
   "Crush thi, hai, aur rahegi — forever ✨",
-  "Tujhe dekh ke dil bolta hai — yahi hai meri wali 😏🤍",
+  "Do you know… Main tenu kinna pyaar karda 💕",
+  "Do you know… Main tere utte kinna marda 🥺",
+  "Do you know… Tere layi main ta baki kudiya chad ta 🤍",
+  "Do you know… Tera layi kudiya naal lad da 😤❤️",
 ];
 
 // Pre-generate particles to avoid re-renders
