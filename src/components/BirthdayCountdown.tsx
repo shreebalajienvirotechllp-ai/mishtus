@@ -96,13 +96,13 @@ const BirthdayCountdown = () => {
               </motion.div>
               <div className="mt-8 paper-texture rounded-2xl p-8 shadow-lg border border-border/30">
                 <p className="font-display text-xl italic text-foreground leading-relaxed">
-                  17 saal ki ho gayi tu aaj! Badi ho rahi hai Mishtu meri 🥹
+                  awwww 17 saal ki ho gyi aaj! Badi ho rhi hai meri Mishtu🥹
                 </p>
                 <p className="mt-4 font-display text-lg italic text-foreground leading-relaxed">
-                  Duniya ki saari khushiyan teri ho — yeh dua hai, yeh wish hai, aur yeh promise hai.
+                  Duniya ki saari khushiyan meri mishttuu ke ho, DR ji mere dil ka kuch illaz kardo
                 </p>
                 <p className="mt-4 font-display text-lg italic text-primary">
-                  Happy Birthday meri Jaan 🎂🤍
+                  Happy Birthday DR. MISHTY SINGLA🎂🤍
                 </p>
                 <p className="mt-4 text-right font-display text-sm text-primary">
                   — Tera bacha 🤍
