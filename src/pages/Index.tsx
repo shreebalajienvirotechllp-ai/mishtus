@@ -20,6 +20,7 @@ import FooterSection from "@/components/FooterSection";
 import EmojiRain from "@/components/EmojiRain";
 import DoubleTapHeart from "@/components/DoubleTapHeart";
 import FloatingNav from "@/components/FloatingNav";
+import FloatingQuotes from "@/components/FloatingQuotes";
 
 const Index = () => {
   const [unlocked, setUnlocked] = useState(false);
@@ -43,6 +44,7 @@ const Index = () => {
       <div className="min-h-screen relative">
         <EmojiRain />
         <FloatingNav />
+        <FloatingQuotes />
         <HeroSection />
         <SectionDivider variant="glow" />
         <BirthdayCountdown />
