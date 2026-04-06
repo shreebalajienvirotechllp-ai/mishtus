@@ -65,8 +65,7 @@ const MandirMoment = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.7 }}
             >
-              Chalisa khatam hui, aankhen kholi — aur tu saamne thi. Sach mein.
-              Hanuman Jayanti ke din, Bhagwan ne prasaad mein meri jaan ki ek jhalak de di. 🙏
+              Chalisa khatam hua aankhen kholi aur aap saamne thi Sach mein apne foots touch hue Hanuman Jayanti ke din Bhagwan ji ne prasaad mein meri jaan ki ek jhalak de di thanks godd🙏
             </motion.p>
 
             <motion.p
