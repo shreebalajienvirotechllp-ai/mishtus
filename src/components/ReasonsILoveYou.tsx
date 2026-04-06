@@ -6,7 +6,23 @@ const reasons = [
   "Aap bina try kiye bhi sabse khoobsurat lagti ho I remimber bahot bhar without facewash bhi milne aye but itne cute itne cute lagte thi kooi hadd he nahi",
   "Aapka gussa bhi cute hai",
   "Aapse baat karke din achha ho jaata hai",
-// ... keep existing code
+  "Tu samajhti hai bina bole",
+  "Teri aankhein bahut kuch keh deti hain",
+  "Tu sabse alag hai — genuinely",
+  "Tera caring nature",
+  "Jab tu hasti hai toh dimples",
+  "Apka vo confused face",
+  "Tu strong hai — usse bhi zyada jitna tu sochti hai",
+  "Tujhse milke better insaan bana",
+  "Tera sense of humor",
+  "Tu jab serious hoti hai — woh look",
+  "Kyunki tu Mishtu hai — aur wahi kaafi hai 🤍",
+];
+
+const ReasonsILoveYou = () => {
+  return (
+    <section className="py-16 md:py-20 bg-background overflow-hidden">
+      <div className="mx-auto max-w-4xl px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
