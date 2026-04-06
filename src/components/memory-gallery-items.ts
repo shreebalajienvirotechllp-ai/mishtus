@@ -65,6 +65,7 @@ import gallery64 from "@/assets/gallery-64.png";
 import gallery65 from "@/assets/gallery-65.png";
 import gallery66 from "@/assets/gallery-66.png";
 import gallery67 from "@/assets/gallery-67.png";
+import gallery68 from "@/assets/gallery-68.png";
 
 export type GalleryItem = {
   id: number;
