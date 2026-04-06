@@ -53,7 +53,7 @@ const DailyMessage = () => {
             Aaj Ka Message 💌
           </h2>
           <p className="mt-3 text-sm text-muted-foreground">
-            Har din ek naya message — sirf tere liye
+            Daily ek new message aayega sirf meri mishtuuu ke liye
           </p>
         </motion.div>
 

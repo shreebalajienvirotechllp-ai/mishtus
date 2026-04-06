@@ -82,7 +82,7 @@ const BirthdayCountdown = () => {
                 <Cake className="mx-auto mb-4 h-12 w-12 text-primary" />
               </motion.div>
               <h2 className="font-display text-4xl font-bold text-foreground md:text-5xl">
-                Happy Birthday Mishtu! 🎂🥳
+                Happy Birthday Mishtu darling! 🎂🥳
               </h2>
               <p className="mt-3 text-lg text-primary font-display italic">
                 Aaj aapka din hai duniya ki sabse khoobsurat ladki ka birthday! mwwaahhh 🤍

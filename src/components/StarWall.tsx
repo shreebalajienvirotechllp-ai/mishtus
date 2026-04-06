@@ -54,10 +54,10 @@ const StarWall = () => {
           className="mb-14 text-center"
         >
           <h2 className="font-display text-4xl font-bold md:text-5xl" style={{ color: "hsl(30, 50%, 92%)" }}>
-            Wishes & Promises
+            Wishes & Promises - dil se dil
           </h2>
           <p className="mt-3 font-body text-sm" style={{ color: "hsl(30, 30%, 70%)" }}>
-            17 stars, 17 saal, 17 vaade — tap karke dekh 🌟
+            17 stars, 17 Years, 17 promises - tap karke dekhlo 🌟
           </p>
         </motion.div>
 
