@@ -44,6 +44,7 @@ const Index = () => {
       <div className="min-h-screen relative">
         <EmojiRain />
         <FloatingNav />
+        <FloatingQuotes />
         <HeroSection />
         <SectionDivider variant="glow" />
         <BirthdayCountdown />
