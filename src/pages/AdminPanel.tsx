@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { motion, AnimatePresence } from "framer-motion";
 import { Lock, MessageCircle, Trash2, RefreshCw, Reply, Send, X } from "lucide-react";
 import { toast } from "sonner";
+import MessageBox from "@/components/MessageBox";
 
 const ADMIN_PASSWORD = "mishtu2025";
 
@@ -237,6 +238,9 @@ const AdminPanel = () => {
             </motion.div>
           ))}
         </AnimatePresence>
+        <div className="mt-8 border-t border-border pt-8">
+          <MessageBox />
+        </div>
       </div>
     </div>
   );
