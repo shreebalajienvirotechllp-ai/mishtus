@@ -146,7 +146,7 @@ const AdminPanel = () => {
           {messages.length === 0 && !loading && (
             <p className="text-center text-muted-foreground py-12">Koi message nahi aaya abhi tak 💭</p>
           )}
-          {messages.map((msg) => (
+          {messages.map((msg, index) => (
             <motion.div
               key={msg.id}
               initial={{ opacity: 0, y: 10 }}
