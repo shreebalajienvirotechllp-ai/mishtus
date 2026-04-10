@@ -122,14 +122,6 @@ const MessageBox = () => {
         </div>
 
         <div className="rounded-2xl border border-border bg-card/80 backdrop-blur-sm p-5 space-y-3 shadow-lg">
-          <input
-            type="text"
-            placeholder="Tumhara naam (optional)"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            maxLength={50}
-            className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
-          />
 
           {/* Textarea with emoji + char count */}
           <div className="relative">
