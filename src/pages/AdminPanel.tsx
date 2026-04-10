@@ -156,7 +156,10 @@ const AdminPanel = () => {
             >
               <div className="flex justify-between items-start">
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-foreground">{msg.name}</p>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs bg-muted text-muted-foreground px-1.5 py-0.5 rounded-md font-mono">#{messages.length - index}</span>
+                    <p className="text-sm font-medium text-foreground">{msg.name}</p>
+                  </div>
                   <p className="text-sm text-muted-foreground mt-1 whitespace-pre-wrap">{msg.message}</p>
                   {msg.image_url && (
                     <a href={msg.image_url} target="_blank" rel="noopener noreferrer">
