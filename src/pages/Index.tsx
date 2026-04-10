@@ -21,7 +21,7 @@ import EmojiRain from "@/components/EmojiRain";
 import DoubleTapHeart from "@/components/DoubleTapHeart";
 import FloatingNav from "@/components/FloatingNav";
 import FloatingQuotes from "@/components/FloatingQuotes";
-import MessageBox from "@/components/MessageBox";
+
 
 const Index = () => {
   const [unlocked, setUnlocked] = useState(false);
@@ -48,8 +48,6 @@ const Index = () => {
         <FloatingQuotes />
         <HeroSection />
         <SectionDivider variant="glow" />
-        <MessageBox />
-        <SectionDivider variant="dots" />
         <BirthdayCountdown />
         <SectionDivider variant="dots" />
         <div id="timeline"><AnimatedTimeline /></div>
